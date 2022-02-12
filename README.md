@@ -19,7 +19,7 @@ To delete a module, run:
     ```
 
 To run a test, run:
-    ```
+    
     $ go test
 
     $ go test -v
@@ -33,4 +33,3 @@ To run a test, run:
     $ go tool cover --func=coverage.out
 
     $ go tool cover --html=coverage.out
-    ```
