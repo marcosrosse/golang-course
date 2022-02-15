@@ -1,4 +1,4 @@
-module github.com/golang-course/22-CRUD
+module github.com/marcosrosse/golang-course/22-CRUD
 
 go 1.17
 
