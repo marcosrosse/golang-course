@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/marcosrosse/golang-course/22-CRUD/db"
 )
 
 type user struct {
@@ -27,5 +29,32 @@ func CreateUsers(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Error to convert json to struct"))
 		return
 	}
-	fmt.Println(user)
+	db, err := db.Conn()
+	if err != nil {
+		w.Write([]byte("Error to connect in the db!"))
+		return
+	}
+	defer db.Close()
+
+	statement, err := db.Prepare("insert into users (name, email) values (?, ?)")
+	if err != nil {
+		w.Write([]byte("Error to create statement!"))
+		return
+	}
+
+	insert, err := statement.Exec(user.Name, user.Email)
+	if err != nil {
+		w.Write([]byte("Error to execute the statement!"))
+		return
+	}
+
+	idInserted, err := insert.LastInsertId()
+	if err != nil {
+		w.Write([]byte("Error getting ID!"))
+		return
+	}
+
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte(fmt.Sprintf("User %s inserted with success! Id: %d", user.Name, idInserted)))
+
 }
