@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/golang-course/1-packages/auxiliary"
+	"github.com/marcosrosse/golang-course/1-packages/auxiliary"
 )
 
 func main() {
