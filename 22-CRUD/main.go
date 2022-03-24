@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/golang-course/22-CRUD/server"
 	"github.com/gorilla/mux"
-	"github.com/marcosrosse/golang-course/22-CRUD/server"
 )
 
 func main() {

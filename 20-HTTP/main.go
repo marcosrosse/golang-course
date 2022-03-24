@@ -16,7 +16,7 @@ type user struct {
 var templates *template.Template
 
 func root(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Root Path!"))
+	w.Write([]byte("Just a simple root page"))
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
